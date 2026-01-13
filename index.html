@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Which Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="page">
+      <main>
+        <section id="players" class="section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Step 1</p>
+              <h1>Who is playing?</h1>
+            </div>
+            <div class="section-actions">
+              <button id="adminLogin" class="btn" type="button">Admin login</button>
+              <button id="clearAll" class="btn" type="button">Clear</button>
+            </div>
+          </div>
+          <div id="playersList" class="players-grid"></div>
+          <p id="playersEmpty" class="empty">No players loaded yet.</p>
+        </section>
+
+        <section id="results" class="section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Step 2</p>
+              <h2>Recommendations</h2>
+            </div>
+          </div>
+
+          <div class="grid results-grid">
+            <div class="card">
+              <h3>Recommended game</h3>
+              <div id="topGame" class="result-main"></div>
+              <p id="topGameEmpty" class="empty">Select at least 3 players.</p>
+            </div>
+
+            <div class="card">
+              <h3>Other eligible games</h3>
+              <ul id="otherGames" class="simple-list"></ul>
+              <p id="otherGamesEmpty" class="empty">Select at least 3 players.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="adminModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+        <div class="modal-head">
+          <h3 id="adminTitle">Admin</h3>
+          <button id="adminClose" class="btn" type="button">Close</button>
+        </div>
+        <div id="adminAuth" class="admin-auth">
+          <label for="adminPasscode" class="admin-label">Passcode</label>
+          <input id="adminPasscode" class="admin-input" type="password" inputmode="numeric" autocomplete="off">
+          <button id="adminUnlock" class="btn" type="button">Unlock</button>
+          <span id="adminAuthError" class="admin-error" aria-live="polite"></span>
+        </div>
+        <div id="adminPanel" class="admin-panel hidden">
+          <p class="admin-note">Changes save to this browser only.</p>
+          <div class="admin-table-wrap">
+            <table id="adminTable" class="admin-table"></table>
+          </div>
+          <div class="section-actions">
+            <button id="adminSave" class="btn" type="button">Save changes</button>
+            <button id="adminReset" class="btn" type="button">Reset to defaults</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <noscript>
+      This page needs JavaScript enabled to calculate recommendations.
+    </noscript>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

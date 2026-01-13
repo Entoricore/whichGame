@@ -1,0 +1,103 @@
+window.WHICH_GAME_DATA = {
+    "preferences":  {
+                        "fields":  [
+                                       "Mike",
+                                       "mikeScore",
+                                       "Chris",
+                                       "chrisScore",
+                                       "Kirill",
+                                       "kirillScore",
+                                       "Aidan",
+                                       "aidanScore",
+                                       "Bert",
+                                       "bertScore",
+                                       "Tom",
+                                       "tomScore",
+                                       "Trent",
+                                       "trentScore"
+                                   ],
+                        "rows":  [
+                                     {
+                                         "Mike":  "Valorant",
+                                         "mikeScore":  3,
+                                         "Chris":  "Valorant",
+                                         "chrisScore":  3,
+                                         "Kirill":  "Valorant",
+                                         "kirillScore":  3,
+                                         "Aidan":  "Valorant",
+                                         "aidanScore":  3,
+                                         "Bert":  "Valorant",
+                                         "bertScore":  0,
+                                         "Tom":  "Valorant",
+                                         "tomScore":  1,
+                                         "Trent":  "Valorant",
+                                         "trentScore":  1
+                                     },
+                                     {
+                                         "Mike":  "Counterstrike",
+                                         "mikeScore":  2,
+                                         "Chris":  "Counterstrike",
+                                         "chrisScore":  2,
+                                         "Kirill":  "Counterstrike",
+                                         "kirillScore":  0,
+                                         "Aidan":  "Counterstrike",
+                                         "aidanScore":  2,
+                                         "Bert":  "Counterstrike",
+                                         "bertScore":  2,
+                                         "Tom":  "Counterstrike",
+                                         "tomScore":  3,
+                                         "Trent":  "Counterstrike",
+                                         "trentScore":  3
+                                     },
+                                     {
+                                         "Mike":  "Clubs - League",
+                                         "mikeScore":  3,
+                                         "Chris":  "Clubs - League",
+                                         "chrisScore":  3,
+                                         "Kirill":  "Clubs - League",
+                                         "kirillScore":  3,
+                                         "Aidan":  "Clubs - League",
+                                         "aidanScore":  3,
+                                         "Bert":  "Clubs - League",
+                                         "bertScore":  3,
+                                         "Tom":  "Clubs - League",
+                                         "tomScore":  3,
+                                         "Trent":  "Clubs - League",
+                                         "trentScore":  3
+                                     },
+                                     {
+                                         "Mike":  "Clubs - Rush",
+                                         "mikeScore":  2,
+                                         "Chris":  "Clubs - Rush",
+                                         "chrisScore":  2,
+                                         "Kirill":  "Clubs - Rush",
+                                         "kirillScore":  2,
+                                         "Aidan":  "Clubs - Rush",
+                                         "aidanScore":  0,
+                                         "Bert":  "Clubs - Rush",
+                                         "bertScore":  2,
+                                         "Tom":  "Clubs - Rush",
+                                         "tomScore":  3,
+                                         "Trent":  "Clubs - Rush",
+                                         "trentScore":  3
+                                     },
+                                     {
+                                         "Mike":  "Dota 2",
+                                         "mikeScore":  2,
+                                         "Chris":  "Dota 2",
+                                         "chrisScore":  0,
+                                         "Kirill":  "Dota 2",
+                                         "kirillScore":  3,
+                                         "Aidan":  "Dota 2",
+                                         "aidanScore":  2,
+                                         "Bert":  "Dota 2",
+                                         "bertScore":  2,
+                                         "Tom":  "Dota 2",
+                                         "tomScore":  2,
+                                         "Trent":  "Dota 2",
+                                         "trentScore":  0
+                                     }
+                                 ]
+                    },
+    "rulesText":  "Valorant - Valorant CANNOT be played with 4 players. Valorant is best played with 5 players. Valorant can be played with 3 players. Valorant CANNOT be played with 6 or more players.\r\n\r\nCounterstrike - Counterstrike can be played with 3 or 4 players. Counterstrike is best played with 5 players. Counterstrike CANNOT be played with 6 or more players.\r\n\r\nClubs - League - Clubs LEAGUE is best played with 6 players. Clubs League can be played with 5 or 7 players. Clubs LEAGUE cannot be played with 4 or 3 players. Clubs league can be played with more than 7 players.\r\n\r\nClubs - Rush - Clubs RUSH is best played with 4 players. Clubs RUSH can be played with 3 players. Clubs RUSH cannot be played with 5 or more players.\r\n\r\nDOTA 2 - Dota 2 can be played with 3 or 4 players. DOTA 2 is best played with 5 players. DOTA 2 cannot be played with more than 6 players.\r\n\r\n"
+};
