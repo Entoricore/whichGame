@@ -9,6 +9,7 @@
   --border: #e2d3bb;
   --shadow: rgba(20, 17, 13, 0.12);
   --radius: 18px;
+  --game-icon-size: 24px;
 }
 
 *,
@@ -123,6 +124,19 @@ body {
   font-size: 1.6rem;
   font-weight: 700;
   margin-top: 12px;
+}
+
+.game-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.game-icon {
+  width: var(--game-icon-size);
+  height: var(--game-icon-size);
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .simple-list {

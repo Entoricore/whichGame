@@ -11,6 +11,19 @@ const dom = {};
 
 const CLUBS_LEAGUE_KEY = "clubs - league";
 const FIVE_PLAYER_PRIORITY = new Set(["valorant", "counterstrike", "dota 2"]);
+const ROCKET_LEAGUE_NAME = "Rocket League";
+const ROCKET_LEAGUE_KEY = "rocket league";
+const ROCKET_LEAGUE_PLAYERS = new Set(["mike", "tom", "trent", "bert"]);
+const GAME_ICON_DIR = "assets/game-icons";
+const GAME_ICON_EXT = "png";
+const GAME_ICON_FILES = new Map([
+  ["clubs - league", "CLubs-League.png"],
+  ["clubs - rush", "Clubs-Rush.png"],
+  ["counterstrike", "Counterstrike.png"],
+  ["dota 2", "DOTA.png"],
+  ["rocket league", "Rocket-league.png"],
+  ["valorant", "Valorant.png"],
+]);
 const ADMIN_PASSCODE = "0670";
 const OVERRIDES_KEY = "whichGameOverridesV1";
 
@@ -652,6 +665,49 @@ function normalizeName(value) {
     .toLowerCase();
 }
 
+function toIconSlug(value) {
+  return normalizeName(value)
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function createGameIcon(name) {
+  const normalized = normalizeName(name);
+  if (!normalized) {
+    return null;
+  }
+  const mapped = GAME_ICON_FILES.get(normalized);
+  const slug = mapped ? null : toIconSlug(name);
+  if (!mapped && !slug) {
+    return null;
+  }
+  const fileName = mapped || `${slug}.${GAME_ICON_EXT}`;
+  const img = document.createElement("img");
+  img.className = "game-icon";
+  img.alt = "";
+  img.setAttribute("aria-hidden", "true");
+  img.loading = "lazy";
+  img.decoding = "async";
+  img.src = `${GAME_ICON_DIR}/${fileName}`;
+  img.addEventListener("error", () => {
+    img.remove();
+  });
+  return img;
+}
+
+function createGameLabel(name) {
+  const wrapper = document.createElement("span");
+  wrapper.className = "game-label";
+  const icon = createGameIcon(name);
+  if (icon) {
+    wrapper.appendChild(icon);
+  }
+  const text = document.createElement("span");
+  text.textContent = name;
+  wrapper.appendChild(text);
+  return wrapper;
+}
+
 function renderPlayers() {
   dom.playersList.innerHTML = "";
   if (!state.players.length) {
@@ -968,7 +1024,31 @@ function computeAndRender() {
   });
 
   let finalRecommendations = recommendations;
-  if (playerCount === 5) {
+  const forceRocketLeague =
+    playerCount === 3 &&
+    selectedPlayers.every((player) =>
+      ROCKET_LEAGUE_PLAYERS.has(normalizeName(player))
+    );
+
+  if (forceRocketLeague) {
+    const existing = recommendations.find(
+      (item) => normalizeName(item.name) === ROCKET_LEAGUE_KEY
+    );
+    const rocketLeagueEntry =
+      existing || {
+        name: ROCKET_LEAGUE_NAME,
+        totalScore: 0,
+        averageScore: 0,
+        bonus: 0,
+        idealRange: null,
+      };
+    finalRecommendations = [
+      rocketLeagueEntry,
+      ...recommendations.filter(
+        (item) => normalizeName(item.name) !== ROCKET_LEAGUE_KEY
+      ),
+    ];
+  } else if (playerCount === 5) {
     const priorityGame = recommendations.find((item) =>
       FIVE_PLAYER_PRIORITY.has(normalizeName(item.name))
     );
@@ -1000,11 +1080,12 @@ function renderRecommendations(recommendations, emptyMessage) {
 
 function setTopGame(name, emptyMessage) {
   if (name) {
-    dom.topGame.textContent = name;
+    dom.topGame.innerHTML = "";
+    dom.topGame.appendChild(createGameLabel(name));
     dom.topGame.style.display = "block";
     dom.topGameEmpty.style.display = "none";
   } else {
-    dom.topGame.textContent = "";
+    dom.topGame.innerHTML = "";
     dom.topGame.style.display = "none";
     dom.topGameEmpty.textContent = emptyMessage;
     dom.topGameEmpty.style.display = "block";
@@ -1018,7 +1099,7 @@ function setOtherGames(names, emptyMessage) {
     dom.otherGamesEmpty.style.display = "none";
     for (const name of names) {
       const item = document.createElement("li");
-      item.textContent = name;
+      item.appendChild(createGameLabel(name));
       dom.otherGames.appendChild(item);
     }
   } else {
