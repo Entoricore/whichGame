@@ -17,7 +17,7 @@ const ROCKET_LEAGUE_PLAYERS = new Set(["mike", "tom", "trent", "bert"]);
 const GAME_ICON_DIR = "assets/game-icons";
 const GAME_ICON_EXT = "png";
 const GAME_ICON_FILES = new Map([
-  ["clubs - league", "CLubs-League.png"],
+  ["clubs - league", "CLubs-League.jpg"],
   ["clubs - rush", "Clubs-Rush.png"],
   ["counterstrike", "Counterstrike.png"],
   ["dota 2", "DOTA.png"],
