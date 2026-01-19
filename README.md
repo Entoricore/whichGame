@@ -14,7 +14,7 @@ Data loads automatically from `data.js` (generated from `UserData.xlsx` and `gam
 ## Admin edits
 
 Use the "Admin login" button to edit player scores inside the page.
-Passcode: `0670`.
+Passcode: `REDACTED`.
 Changes save to this browser only (localStorage). Use "Reset to defaults" to revert.
 
 ## Preferences format
